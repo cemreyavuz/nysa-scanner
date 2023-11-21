@@ -1,4 +1,5 @@
 import React from "react";
+import styled from "styled-components";
 
 type ComponentData = {
   name: string;
@@ -12,7 +13,7 @@ type DetailsCardProps = {
 
 export const DetailsCard = ({ data }: DetailsCardProps): JSX.Element => {
   return (
-    <div>
+    <CardContainer>
       <h3>
         {data.name} - {data.count}
       </h3>
@@ -23,6 +24,11 @@ export const DetailsCard = ({ data }: DetailsCardProps): JSX.Element => {
           </React.Fragment>
         ))}
       </p>
-    </div>
+    </CardContainer>
   );
 };
+
+const CardContainer = styled.div`
+  background-color: lightgray;
+  border-radius: 4px;
+`;
