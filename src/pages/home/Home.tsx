@@ -1,7 +1,7 @@
 import report from "../../assets/example-report.json";
-import DetailsCard from "../../components/details-card/DetailsCard";
+import { DetailsCard } from "../../components/details-card/DetailsCard";
 
-const Home = (): JSX.Element => {
+export const Home = (): JSX.Element => {
   return (
     <div>
       {Object.entries(report).map(([name, item]) => (
@@ -17,5 +17,3 @@ const Home = (): JSX.Element => {
     </div>
   );
 };
-
-export default Home;

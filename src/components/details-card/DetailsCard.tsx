@@ -10,7 +10,7 @@ type DetailsCardProps = {
   data: ComponentData;
 };
 
-const DetailsCard = ({ data }: DetailsCardProps): JSX.Element => {
+export const DetailsCard = ({ data }: DetailsCardProps): JSX.Element => {
   return (
     <div>
       <h3>
@@ -26,5 +26,3 @@ const DetailsCard = ({ data }: DetailsCardProps): JSX.Element => {
     </div>
   );
 };
-
-export default DetailsCard;
