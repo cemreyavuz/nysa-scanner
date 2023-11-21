@@ -1,5 +1,5 @@
 import report from "../../assets/example-report.json";
-import { DetailsCard } from "../../components/details-card/DetailsCard";
+import { DetailsCard } from "../../components/details-card/DetailsCard.tsx";
 
 export const Home = (): JSX.Element => {
   return (
