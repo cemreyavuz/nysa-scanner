@@ -1,3 +1,5 @@
+import React from "react";
+
 type ComponentData = {
   name: string;
   count: number;
@@ -15,10 +17,10 @@ const DetailsCard = ({ data }: DetailsCardProps): JSX.Element => {
         {data.name} - {data.count}
       </h3>
       <p>
-        {Object.entries(data.props).map(([name, count]) => (
-          <>
-            {name} ({count})&nbsp;
-          </>
+        {Object.entries(data.props).map(([propName, count]) => (
+          <React.Fragment key={`${data.name}-${propName}`}>
+            {propName} ({count})&nbsp;
+          </React.Fragment>
         ))}
       </p>
     </div>
