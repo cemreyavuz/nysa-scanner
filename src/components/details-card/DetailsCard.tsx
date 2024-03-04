@@ -4,7 +4,7 @@ import styled from "styled-components";
 type ComponentData = {
   name: string;
   count: number;
-  props: Record<string, number>;
+  props: Record<string, number | undefined>;
 };
 
 type DetailsCardProps = {

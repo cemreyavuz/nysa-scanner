@@ -1,16 +1,18 @@
-import report from "../../assets/example-report.json";
+import data from "../../assets/example-report.json";
 import { DetailsCard } from "../../components/details-card/DetailsCard.tsx";
+
+const report = data[0].reports[0];
 
 export const Home = (): JSX.Element => {
   return (
     <div>
-      {Object.entries(report).map(([name, item]) => (
+      {report.imports.map(({ name, instances, props }) => (
         <DetailsCard
           key={name}
           data={{
             name,
-            count: item.instances,
-            props: item.props,
+            count: instances,
+            props,
           }}
         />
       ))}
