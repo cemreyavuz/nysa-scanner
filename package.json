@@ -51,5 +51,8 @@
     "typescript": "^5.3.3",
     "vite": "^5.0.12",
     "vitest": "^1.2.1"
+  },
+  "dependencies": {
+    "react-scanner": "^1.1.0"
   }
 }
