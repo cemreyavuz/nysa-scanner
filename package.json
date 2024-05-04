@@ -24,7 +24,8 @@
     "lint:styles": "stylelint ./**/*.{css,scss}",
     "format:scripts": "prettier . --write",
     "format:styles": "stylelint ./**/*.{css,scss} --fix",
-    "format": "npm run format:scripts && npm run format:styles"
+    "format": "npm run format:scripts && npm run format:styles",
+    "scan": "ts-node -P ./tsconfig.json ./src/scanner.ts"
   },
   "devDependencies": {
     "@types/jsdom": "^21.1.6",

@@ -7,7 +7,7 @@
     },
     "target": "ESNext",
     "useDefineForClassFields": true,
-    "module": "ESNext",
+    "module": "CommonJS",
     "lib": ["ESNext", "DOM"],
     "moduleResolution": "Node",
     "strict": true,
@@ -21,6 +21,7 @@
     "forceConsistentCasingInFileNames": true,
     "types": ["vite/client", "node"],
   },
+  "files": ["./src/vite-env.d.ts"],
   "include": ["src"],
   "exclude": ["**/*.test.ts", "node_modules", "test/**", ".history/**"],
 }
