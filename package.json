@@ -1,6 +1,5 @@
 {
   "name": "@cemreyavuz/nysa-scanner",
-  "private": true,
   "version": "0.0.1",
   "type": "module",
   "module": "./dist/nysa-scanner.mjs",
