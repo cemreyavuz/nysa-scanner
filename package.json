@@ -3,16 +3,13 @@
   "private": true,
   "version": "0.0.2",
   "type": "module",
-  "main": "./dist/nysa-scanner.cjs",
   "module": "./dist/nysa-scanner.mjs",
   "exports": {
     ".": {
-      "require": "./dist/nysa-scanner.cjs",
       "import": "./dist/nysa-scanner.mjs"
     },
     "./dist/": {
-      "import": "./dist/",
-      "require": "./dist/"
+      "import": "./dist/"
     }
   },
   "types": "./dist/index.d.ts",
