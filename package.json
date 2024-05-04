@@ -2,6 +2,7 @@
   "name": "nysa-scanner",
   "private": true,
   "version": "0.0.2",
+  "type": "module",
   "main": "./dist/nysa-scanner.cjs",
   "module": "./dist/nysa-scanner.mjs",
   "exports": {

@@ -21,7 +21,6 @@
     "forceConsistentCasingInFileNames": true,
     "types": ["vite/client", "node"],
   },
-  "files": ["./src/vite-env.d.ts"],
   "include": ["src"],
   "exclude": ["**/*.test.ts", "node_modules", "test/**", ".history/**"],
 }
