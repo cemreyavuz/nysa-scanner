@@ -1,6 +1,9 @@
 {
   "name": "nysa-scanner",
   "version": "0.0.2",
+  "repository": {
+    "url": "https://github.com/cemreyavuz/nysa-scanner"
+  },
   "type": "module",
   "module": "./dist/nysa-scanner.mjs",
   "exports": {
