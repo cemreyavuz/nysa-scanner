@@ -1,10 +1,6 @@
-import scanner, { ReactScannerConfig } from "react-scanner";
+import scanner from "react-scanner";
 import path from "path";
 import fs from "fs";
-
-export const scan = async (config: ReactScannerConfig) => {
-  return await scanner.run(config);
-};
 
 type RunProps = {
   projectRoot: string;
@@ -12,7 +8,7 @@ type RunProps = {
   pkgJsonPath?: string;
 };
 
-const run = async ({ projectRoot, srcDirPath, pkgJsonPath }: RunProps) => {
+export const scan = async ({ projectRoot, srcDirPath, pkgJsonPath }: RunProps) => {
   const packageJson = JSON.parse(
     fs.readFileSync(
       path.resolve(pkgJsonPath ?? path.resolve(projectRoot, "package.json")),
@@ -21,7 +17,7 @@ const run = async ({ projectRoot, srcDirPath, pkgJsonPath }: RunProps) => {
   ) as { dependencies: Record<string, string> };
   const dependencies = Object.keys(packageJson.dependencies);
 
-  const scanResults = await scan({
+  const scanResults = await scanner.run({
     crawlFrom: path.resolve(srcDirPath ?? path.resolve(projectRoot, "src")),
     processors: ["raw-report"],
     rootDir: path.resolve(projectRoot),
