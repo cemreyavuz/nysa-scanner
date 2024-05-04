@@ -1,7 +1,6 @@
 /// <reference types="vitest" />
 import path from "path";
 import { defineConfig } from "vite";
-import dts from "vite-plugin-dts";
 import packageJson from "./package.json";
 
 const getPackageName = () => {
@@ -17,7 +16,7 @@ const getPackageNameCamelCase = () => {
 };
 
 const fileName = {
-  es: `${getPackageName()}.mjs`,
+  es: `nysa-scanner.mjs`,
 };
 
 const formats = Object.keys(fileName) as Array<keyof typeof fileName>;
