@@ -31,6 +31,9 @@ module.exports = defineConfig({
       formats,
       fileName: format => fileName[format],
     },
+    rollupOptions: {
+      external: Object.keys(packageJson.dependencies),
+    }
   },
   test: {},
   resolve: {
