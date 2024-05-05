@@ -5,13 +5,16 @@
     "url": "https://github.com/cemreyavuz/nysa-scanner"
   },
   "type": "module",
+  "main": "./dist/nysa-scanner.cjs",
   "module": "./dist/nysa-scanner.mjs",
   "exports": {
     ".": {
-      "import": "./dist/nysa-scanner.mjs"
+      "import": "./dist/nysa-scanner.mjs",
+      "require": "./dist/nysa-scanner.cjs"
     },
     "./dist/": {
-      "import": "./dist/"
+      "import": "./dist/",
+      "require": "./dist/"
     }
   },
   "types": "./dist/index.d.ts",

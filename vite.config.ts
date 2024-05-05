@@ -18,6 +18,7 @@ const getPackageNameCamelCase = () => {
 
 const fileName = {
   es: `nysa-scanner.mjs`,
+  cjs: `nysa-scanner.cjs`,
 };
 
 const formats = Object.keys(fileName) as Array<keyof typeof fileName>;
