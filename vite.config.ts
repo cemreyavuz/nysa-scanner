@@ -32,6 +32,7 @@ export default defineConfig({
       formats,
       fileName: (format) => fileName[format],
     },
+    minify: false,
     rollupOptions: {
       external: [...Object.keys(packageJson.dependencies), "path", "fs"],
     },
