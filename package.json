@@ -5,18 +5,22 @@
     "url": "https://github.com/cemreyavuz/nysa-scanner"
   },
   "type": "module",
-  "main": "./nysa-scanner.cjs",
-  "module": "./nysa-scanner.mjs",
+  "main": "./dist/nysa-scanner.cjs",
+  "module": "./dist/nysa-scanner.mjs",
   "exports": {
     ".": {
-      "import": "./nysa-scanner.mjs",
-      "require": "./nysa-scanner.cjs"
+      "import": "./dist/nysa-scanner.mjs",
+      "require": "./dist/nysa-scanner.cjs"
+    },
+    "./dist/": {
+      "import": "./dist/",
+      "require": "./dist/"
     }
   },
-  "types": "./index.d.ts",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "dev": "vite --host",
-    "build": "rimraf dist/**/* && tsc && vite build && dts-bundle-generator --config ./dts-bundle-generator.config.ts && copyfiles ./package.json dist",
+    "build": "rimraf dist/**/* && tsc && vite build && dts-bundle-generator --config ./dts-bundle-generator.config.ts",
     "test": "vitest",
     "test:coverage": "vitest --coverage",
     "lint:scripts": "eslint . --ext .ts",
