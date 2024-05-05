@@ -33,7 +33,7 @@ export default defineConfig({
       fileName: (format) => fileName[format],
     },
     rollupOptions: {
-      external: Object.keys(packageJson.dependencies),
+      external: [...Object.keys(packageJson.dependencies), "path", "fs"],
     },
   },
   plugins: [],
