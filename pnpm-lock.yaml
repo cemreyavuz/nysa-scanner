@@ -11,9 +11,6 @@ importers:
       react-scanner:
         specifier: ^1.1.0
         version: 1.1.0
-      yargs:
-        specifier: ^17.7.2
-        version: 17.7.2
     devDependencies:
       '@types/jsdom':
         specifier: ^21.1.6
@@ -87,6 +84,9 @@ importers:
       vitest:
         specifier: ^1.2.1
         version: 1.5.2(@types/node@20.12.7)
+      yargs:
+        specifier: ^17.7.2
+        version: 17.7.2
 
 packages:
 
