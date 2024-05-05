@@ -15,7 +15,7 @@ export const scan = async ({ projectRoot, srcDirPath, pkgJsonPath }: RunProps) =
       { encoding: "utf-8" }
     )
   ) as { dependencies: Record<string, string> };
-  const dependencies = Object.keys(packageJson.dependencies);
+  const dependencies = Object.keys(packageJson.dependencies ?? {});
 
   const scanResults = await scanner.run({
     crawlFrom: path.resolve(srcDirPath ?? path.resolve(projectRoot, "src")),
