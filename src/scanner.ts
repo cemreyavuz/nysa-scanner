@@ -8,14 +8,24 @@ type RunProps = {
   pkgJsonPath?: string;
 };
 
-export const scan = async ({ projectRoot, srcDirPath, pkgJsonPath }: RunProps) => {
+export const scan = async ({
+  projectRoot,
+  srcDirPath,
+  pkgJsonPath,
+}: RunProps) => {
   const packageJson = JSON.parse(
     fs.readFileSync(
       path.resolve(pkgJsonPath ?? path.resolve(projectRoot, "package.json")),
       { encoding: "utf-8" }
     )
-  ) as { dependencies: Record<string, string> };
-  const dependencies = Object.keys(packageJson.dependencies ?? {});
+  ) as {
+    dependencies: Record<string, string>;
+    devDependencies: Record<string, string>;
+  };
+  const dependencies = {
+    ...Object.keys(packageJson.dependencies ?? {}),
+    ...Object.keys(packageJson.devDependencies ?? {}),
+  };
 
   const scanResults = await scanner.run({
     crawlFrom: path.resolve(srcDirPath ?? path.resolve(projectRoot, "src")),
