@@ -22,10 +22,10 @@ export const scan = async ({
     dependencies: Record<string, string>;
     devDependencies: Record<string, string>;
   };
-  const dependencies = {
+  const dependencies = [
     ...Object.keys(packageJson.dependencies ?? {}),
     ...Object.keys(packageJson.devDependencies ?? {}),
-  };
+  ];
 
   const scanResults = await scanner.run({
     crawlFrom: path.resolve(srcDirPath ?? path.resolve(projectRoot, "src")),
