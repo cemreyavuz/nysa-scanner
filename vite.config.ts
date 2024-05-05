@@ -1,6 +1,7 @@
 /// <reference types="vitest" />
 import path from "path";
 import { defineConfig } from "vite";
+import { viteStaticCopy } from 'vite-plugin-static-copy';
 import packageJson from "./package.json";
 
 const getPackageName = () => {
@@ -35,5 +36,14 @@ export default defineConfig({
       external: Object.keys(packageJson.dependencies),
     },
   },
-  plugins: [],
+  plugins: [
+    viteStaticCopy({
+      targets: [
+        {
+          src: path.resolve(__dirname, "./bin"),
+          dest: "./",
+        },
+      ],
+    }),
+  ],
 });

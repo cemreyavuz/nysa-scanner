@@ -16,7 +16,7 @@
   },
   "types": "./dist/index.d.ts",
   "bin": {
-    "nysa-scanner": "./bin/index.cjs"
+    "nysa-scanner": "./dist/bin/index.cjs"
   },
   "scripts": {
     "dev": "vite --host",
@@ -52,6 +52,7 @@
     "ts-node": "^10.9.2",
     "typescript": "^5.3.3",
     "vite": "^5.0.12",
+    "vite-plugin-static-copy": "^1.0.4",
     "vitest": "^1.2.1",
     "yargs": "^17.7.2"
   },
