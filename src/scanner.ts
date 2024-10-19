@@ -2,17 +2,44 @@ import scanner from "react-scanner";
 import path from "path";
 import fs from "fs";
 
+import { Logger, LogLevel } from "./log";
+
 type RunProps = {
   projectRoot: string;
   srcDirPath?: string;
   pkgJsonPath?: string;
+
+  /**
+   * Minimum level of severity for logging messages to console. If no level is
+   * provided, will not log.
+   * @default LogLevel.ERROR
+   */
+  logLevel?: LogLevel;
+
+  /**
+   * File path to write the logs into. If no destination is provided, will log
+   * to console instead.
+   */
+  logDestination?: string;
+
+  /**
+   * File path to write the output. If no destination is provided, will not
+   * write the output.
+   */
+  outputDestination?: string;
 };
 
 export const scan = async ({
   projectRoot,
   srcDirPath,
   pkgJsonPath,
+  logLevel = LogLevel.INFO,
+  logDestination,
+  outputDestination,
 }: RunProps) => {
+  const logger = new Logger({ level: logLevel, destination: logDestination });
+
+  logger.info("Parsing package.json");
   const packageJson = JSON.parse(
     fs.readFileSync(
       path.resolve(pkgJsonPath ?? path.resolve(projectRoot, "package.json")),
@@ -22,10 +49,12 @@ export const scan = async ({
     dependencies: Record<string, string>;
     devDependencies: Record<string, string>;
   };
+
   const dependencies = [
     ...Object.keys(packageJson.dependencies ?? {}),
     ...Object.keys(packageJson.devDependencies ?? {}),
-  ];
+  ].sort();
+  logger.info(`Found dependencies: "${dependencies.join(",")}"`)
 
   const scanResults = await scanner.run({
     crawlFrom: path.resolve(srcDirPath ?? path.resolve(projectRoot, "src")),
@@ -46,6 +75,7 @@ export const scan = async ({
     }
   > = {};
 
+  logger.info("Formatting scan results");
   Object.entries(scanResults).forEach(([componentName, { instances }]) => {
     instances.forEach(({ importInfo, props }) => {
       // pass if importInfo doesn't exist
@@ -88,7 +118,6 @@ export const scan = async ({
       });
     });
   });
-
   const combined = Object.entries(formatted).map(
     ([libraryName, { bindings }]) => ({
       library: libraryName,
@@ -98,6 +127,13 @@ export const scan = async ({
       })),
     })
   );
+
+  logger.info("Completed the scan");
+
+  if (outputDestination) {
+    logger.info(`Writing the results into "${outputDestination}"`);
+    fs.writeFileSync(outputDestination, JSON.stringify(combined, undefined, 2));
+  }
 
   return combined;
 };
